@@ -80,7 +80,7 @@ function total2(objectArray) {
 // String Method
 const string =
   " Perhaps The Easiest-to-understand   Case   For Reduce Is   To Return The Sum Of  All The Elements In  An Array  ";
-console.log("\nthis is the original string: \n" + string);
+console.log("\nthis is the original string: \n'" + string + "'");
 
 /*
 Given the string, implement a function 
@@ -95,5 +95,8 @@ const newStr = string
   .join(" ")
   .toLocaleLowerCase();
 console.log(
-  "this is the new string: \n" + newStr[0].toUpperCase() + newStr.substring(1)
+  "this is the new string: \n'" +
+    newStr[0].toUpperCase() +
+    newStr.substring(1) +
+    "'"
 );
