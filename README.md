@@ -1,6 +1,6 @@
-# hello-world
+# Intriduction
 
 :robot:
-Welcome to my first repository
+This is my assignment repository for Chuwa Fullstack JavaScript Training
 :dog:
 
