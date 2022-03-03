@@ -14,8 +14,8 @@ for generating a new array which doubles the
 quantity and price in each object.
 */
 function doubles(objectArray) {
-  return objectArray.map((ele) => {
-    return { quantity: ele.quantity * 2, price: ele.price * 2 };
+  return objectArray.map(({ quantity, price }) => {
+    return { quantity: quantity * 2, price: price * 2 };
   });
 }
 
@@ -39,8 +39,8 @@ for generating a new array which contains item
 quantity > 2 and price > 300 only.
 */
 function larger(objectArray, qua = 0, pri = 0) {
-  return objectArray.filter((ele) => {
-    if (ele.quantity > qua && ele.price > pri) return ele;
+  return objectArray.filter(({ quantity, price }) => {
+    return quantity > qua && price > pri;
   });
 }
 function larger2(objectArray, qua = 0, pri = 0) {
@@ -75,7 +75,7 @@ function total2(objectArray) {
   return sum;
 }
 
-// console.log(total2(itemsObject));
+console.log(total2(itemsObject));
 
 // String Method
 const string =
@@ -89,14 +89,16 @@ and extra space in the string and convert
 the string to all lowercase.
 */
 const newStr = string
-  .replaceAll("-", " ")
-  .split(" ")
-  .filter((word) => word.length > 0)
+  // .replaceAll("-", " ")
+  .trim()
+  .split(/[ -]+/) //remove extra space and hyphen
+  // .filter((word) => word.length > 0)
   .join(" ")
-  .toLocaleLowerCase();
+  .toLowerCase();
 console.log(
   "this is the new string: \n'" +
-    newStr[0].toUpperCase() +
-    newStr.substring(1) +
+    newStr +
+    // newStr[0].toUpperCase() +
+    // newStr.substring(1) +
     "'"
 );
