@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* element selector */
 p {
   text-align: center;
@@ -38,3 +39,45 @@ h6,
 .outer span {
   background-color: grey;
 }
+=======
+/* element selector */
+p {
+  text-align: center;
+  color: red;
+}
+/* id selector */
+#para1 {
+  text-align: center;
+  color: red;
+}
+/* class name selector */
+.oneClassName {
+  text-align: center;
+  color: red;
+}
+/* grouping selector */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.className,
+#id {
+  color: red;
+  font-family: sans-serif;
+}
+/* child selector: <span> tag need to be directly under 
+   tags of "outer"/"inner" class */
+.outer > span {
+  background-color: grey;
+}
+.inner > span {
+  background-color: grey;
+}
+/* descendant selector: <span> don't have to be 
+   directly under tags of "outer" class*/
+.outer span {
+  background-color: grey;
+}
+>>>>>>> 7649dbf (test commit from local)
