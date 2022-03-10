@@ -37,26 +37,26 @@ let div1 = document.createElement("div");
 div1.id = "task1";
 let title1 = document.createElement("h3");
 title1.textContent = "1 Table with styles you want to add";
-div1.appendChild(title1);
+
 let table = document.createElement("table");
 let colGroup = document.createElement("colGroup");
-for (let i = 0; i < Object.keys(tableInfo[0]).length; i++) {
+
+Object.keys(tableInfo[0]).forEach((colName) => {
   let col = document.createElement("col");
-  col.id = Object.keys(tableInfo[0])[i];
+  col.id = colName;
   colGroup.appendChild(col);
-}
+});
 table.appendChild(colGroup);
+
 let header = document.createElement("tr");
 header.id = "tableHeader";
 table.appendChild(header);
 
-for (let i = 0; i < Object.keys(tableInfo[0]).length; i++) {
+Object.keys(tableInfo[0]).forEach((headerName) => {
   let th = document.createElement("th");
-  th.textContent =
-    Object.keys(tableInfo[0])[i][0].toUpperCase() +
-    Object.keys(tableInfo[0])[i].substring(1);
+  th.textContent = headerName[0].toUpperCase() + headerName.substring(1);
   header.appendChild(th);
-}
+});
 tableInfo.forEach((ele) => {
   let row = document.createElement("tr");
   row.id = Object.values(ele)[0];
@@ -68,6 +68,7 @@ tableInfo.forEach((ele) => {
   table.appendChild(row);
 });
 
+div1.appendChild(title1);
 div1.appendChild(table);
 document.body.appendChild(div1);
 document.body.appendChild(document.createElement("hr"));
@@ -80,7 +81,7 @@ div2.id = "task2";
 let title2 = document.createElement("h3");
 title2.textContent =
   "2. Given the array and generate order list and unordered list";
-div2.appendChild(title2);
+
 let ol = document.createElement("ol");
 let ul = document.createElement("ul");
 
@@ -97,6 +98,7 @@ list.forEach((lang) => {
   ul.appendChild(li);
 });
 
+div2.appendChild(title2);
 div2.append(ol);
 div2.append(ul);
 document.body.appendChild(div2);
@@ -122,7 +124,7 @@ div3.id = "task3";
 let title3 = document.createElement("h3");
 title3.textContent =
   "3 Given an array and implement a dropdown list with the following";
-div3.appendChild(title3);
+
 let select = document.createElement("select");
 dropDownList.forEach((city) => {
   let option = document.createElement("option");
@@ -130,6 +132,7 @@ dropDownList.forEach((city) => {
   option.textContent = city["content"];
   select.appendChild(option);
 });
-div3.appendChild(select);
 
+div3.appendChild(title3);
+div3.appendChild(select);
 document.body.appendChild(div3);
