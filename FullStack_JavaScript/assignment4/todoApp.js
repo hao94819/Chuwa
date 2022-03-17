@@ -12,16 +12,20 @@ todoApi.todos.forEach((todoItem) => {
   let li = document.createElement("li");
   let content = todoItem.content;
   let className = todoItem.isCompleted;
-  li.textContent = content;
+  let span = document.createElement("span");
+
   li.id = content;
   li.className = className;
-  li.onclick = taskComplete;
+  span.textContent = content;
+  span.onclick = taskComplete;
+
   let delBtn = document.createElement("button");
-  delBtn.id = content;
   delBtn.textContent = "delete";
   delBtn.onclick = rmFromList;
+
+  li.appendChild(span);
+  li.appendChild(delBtn);
   ol.appendChild(li);
-  ol.appendChild(delBtn);
 });
 
 let addBtn = document.getElementById("addBtn");
@@ -35,18 +39,20 @@ function addToList() {
     .addTodo({ content: entry, isCompleted: false })
     .then((response) => {
       let li = document.createElement("li");
-      li.textContent = entry;
+      let span = document.createElement("span");
+
       li.id = entry;
       li.className = "false";
-      li.onclick = taskComplete;
+      span.textContent = entry;
+      span.onclick = taskComplete;
+
       let delBtn = document.createElement("button");
-      delBtn.id = entry;
       delBtn.textContent = "delete";
       delBtn.onclick = rmFromList;
 
-      ol.append(li);
-      ol.append(delBtn);
-      console.log(todoApi.todos);
+      li.appendChild(span);
+      li.appendChild(delBtn);
+      ol.appendChild(li);
     })
     .catch((error) => {
       console.log(error);
@@ -54,15 +60,24 @@ function addToList() {
 }
 
 function taskComplete(ele) {
-  const li = ele.target;
-  li.className = "true";
-  todoApi.modTodo(todoApi.todos.findIndex((x) => x.content === li.id));
+  const span = ele.target;
+  const content = span.textContent;
+  const li = document.getElementById(content);
+  if (li.className === "true") {
+    li.className = "false";
+    todoApi.modTodo(todoApi.todos.findIndex((x) => x.content === li.id));
+  } else if (li.className === "false") {
+    li.className = "true";
+    todoApi.modTodo(todoApi.todos.findIndex((x) => x.content === li.id));
+  }
 }
 
 function rmFromList(ele) {
   const btn = ele.target;
-  const content = btn.id;
-  document.getElementById(content).remove();
-  btn.remove();
+  const li = btn.closest("li");
+  const content = li.id;
+  btn.closest("li").remove();
   todoApi.delTodo(todoApi.todos.findIndex((x) => x.content === content));
 }
+
+// issue: need to consider task with same contents (same id/text)
