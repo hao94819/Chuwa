@@ -74,9 +74,9 @@ function taskComplete(ele) {
 
 function rmFromList(ele) {
   const btn = ele.target;
-  const li = btn.closest("li");
+  const li = btn.parentNode;
   const content = li.id;
-  btn.closest("li").remove();
+  li.remove();
   todoApi.delTodo(todoApi.todos.findIndex((x) => x.content === content));
 }
 
